@@ -1,0 +1,34 @@
+spring:
+  profiles-active: local
+  jackson:
+    deserialization:
+      FAIL_ON_UNKNOWN_PROPERTIES: false
+    serialization:
+      INDENT_OUTPUT: true
+
+logging:
+  level:
+    root: INFO
+    com:
+      acf:
+        examples:
+          java17: DEBUG
+
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    tryItOutEnabled: true
+    filter: false
+    syntaxHighlight.activated: true
+
+
+services:
+  dogapi:
+    host: https://dogapi.dog
+    baseUrl: /api/v2
+    fullUrl: ${services.dogapi.host}${services.dogapi.baseUrl}
+    breeds:
+      fullUrl: ${services.dogapi.fullUrl}/breeds
+
+
