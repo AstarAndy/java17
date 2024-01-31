@@ -9,6 +9,7 @@ and then push json data using `MVC` and `RestTemplate`.
 3. You will not find much of any `JavaDocs` which you expect in a real code base (See 1 again)
 4. The `only` purpose of this exercise is play with the new java `Record`
 
+
 ## Goals of this exercise  
 See if `Record` will work in places where a traditional DTO/Swagger POJO would be used.
 
