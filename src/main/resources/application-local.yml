@@ -5,6 +5,36 @@ spring:
       FAIL_ON_UNKNOWN_PROPERTIES: false
     serialization:
       INDENT_OUTPUT: true
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:testCompany;DB_CLOSE_DELAY=-1;MODE=MYSQL
+    username: sa
+    password:
+    # Hikari will use the above plus the following to setup connection pooling
+    hikari:
+      minimumIdle: 5
+      maximumPoolSize: 20
+      idleTimeout: 30000
+      poolName: LocalH2ConnectionPool
+      maxLifetime: 2000000
+      connectionTimeout: 30000
+      connectionTestQuery: SELECT 1
+  jpa:
+    # This is now auto detected and is no longer needed
+    #database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        generate_statistics: TRUE
+        show_sql: TRUE
+        format_sql: TRUE
+        use_sql: true
+        id:
+          new_generator_mappings: false
+  h2:
+    console:
+      enabled: true
 
 logging:
   level:
@@ -13,6 +43,13 @@ logging:
       acf:
         examples:
           java17: DEBUG
+      zaxxer:
+        hikari: INFO
+    org:
+      hibernate:
+        SQL: INFO
+        type: INFO
+
 
 springdoc:
   swagger-ui:
