@@ -4,6 +4,9 @@ import com.acf.examples.java17.record.ServiceResponse;
 import com.acf.examples.java17.record.breed.BreedRec;
 import com.acf.examples.java17.service.DogsApiService;
 import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,8 +30,25 @@ public class DogsApiController {
     }
 
     @GetMapping(value = "/breeds/{breedId}")
-    public ResponseEntity<String> geBreedDetails(@PathVariable("breedId") Integer breedId) {
-        return ResponseEntity.ok("Here is your stuff from /breeds/{breedId}" + breedId);
+    public ResponseEntity<ServiceResponse<BreedRec>> geBreedDetails(@PathVariable("breedId") UUID breedId) {
+
+        String logStr = String.format("Executing fetch for breedId: %s in ThreadId: %s", breedId, Thread.currentThread().getId());
+        log.info(logStr);
+
+        CompletableFuture<ServiceResponse<BreedRec>> result = dogsService.getBreedForUuid(breedId);
+
+        logStr = String.format("Completed fetch for breedId: %s in ThreadId: %s", breedId, Thread.currentThread().getId());
+        log.info(logStr);
+
+
+        try {
+            return ResponseEntity.ok(result.get());
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 }
