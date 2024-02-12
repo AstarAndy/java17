@@ -59,7 +59,7 @@ This project used the java `Record` type and implemented `part of` the entire gr
 
 Once you have the app running locally, you can then use the localhost URLs as follows  
 > http://localhost:8080/api/v2/breeds  
-> http://localhost:8080/api/v2/breeds/5  
+> http://localhost:8080/api/v2/breeds/68f47c5a-5115-47cd-9849-e45d3c378f12
 
 And `SwaggerDocs` is enabled and you can hit it via these URLs locally  
 > http://localhost:8080/v3/api-docs  
