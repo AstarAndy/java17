@@ -2,6 +2,6 @@ package com.acf.examples.java17.record.breed;
 
 import java.util.List;
 
-public record BreedsListResponse(
+public record DetailsForBreedResponse(
     List<BreedRec> data
 ) { }

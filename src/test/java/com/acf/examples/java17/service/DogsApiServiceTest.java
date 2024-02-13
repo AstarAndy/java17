@@ -1,7 +1,7 @@
 package com.acf.examples.java17.service;
 
 import com.acf.examples.java17.record.breed.BreedRec;
-import com.acf.examples.java17.record.breed.BreedsListResponse;
+import com.acf.examples.java17.record.breed.DetailsForBreedResponse;
 import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
@@ -36,7 +36,7 @@ class DogsApiServiceTest {
     void getAllBreedsTest() {
 
         //ServiceResponse<List<BreedRec>> mockedResult = new ServiceResponse<>(new ArrayList<>());
-        BreedsListResponse mockedResult = new BreedsListResponse(new ArrayList<BreedRec>());
+        DetailsForBreedResponse mockedResult = new DetailsForBreedResponse(new ArrayList<BreedRec>());
 
         /*
                 The service being tested, DogsApiService has a private
@@ -51,11 +51,11 @@ class DogsApiServiceTest {
         // Remember, when mocking, all params must be actual values or all matchers
         ReflectionTestUtils.setField(dogsApi, "breedsFullUrl", "/mocked/url/value");
         when(rtRestClient
-             .getForObject("/mocked/url/value", BreedsListResponse.class))
+             .getForObject("/mocked/url/value", DetailsForBreedResponse.class))
             .thenReturn(mockedResult);
 
 
-        BreedsListResponse actualResult = dogsApi.getAllBreeds();
+        DetailsForBreedResponse actualResult = dogsApi.getAllBreeds();
         Assert.assertEquals(mockedResult, actualResult);
 
     }

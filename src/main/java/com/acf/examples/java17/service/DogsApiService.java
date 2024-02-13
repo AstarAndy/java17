@@ -3,8 +3,7 @@ package com.acf.examples.java17.service;
 import com.acf.examples.java17.record.ServiceResponse;
 import com.acf.examples.java17.record.breed.BreedRec;
 
-import com.acf.examples.java17.record.breed.BreedsListResponse;
-import java.util.List;
+import com.acf.examples.java17.record.breed.DetailsForBreedResponse;
 import java.util.UUID;
 
 import java.util.concurrent.CompletableFuture;
@@ -31,9 +30,9 @@ public class DogsApiService {
     private String breedsFullUrl;
 
 
-    public BreedsListResponse getAllBreeds() {
+    public DetailsForBreedResponse getAllBreeds() {
 
-        BreedsListResponse results = rtRestClient.getForObject(breedsFullUrl, BreedsListResponse.class);
+        DetailsForBreedResponse results = rtRestClient.getForObject(breedsFullUrl, DetailsForBreedResponse.class);
 
         return results;
 

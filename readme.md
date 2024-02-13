@@ -50,8 +50,8 @@ At this point you have everything you need to play with the project
 
 A public api was used as the backend of this exercise.  Here's a list of URLS for the actual api.  You can simply click on one of these links and you'll see the response right from your browser:
 
-> https://dogapi.dog/api/v2/breeds  
-> https://dogapi.dog/api/v2/breeds/68f47c5a-5115-47cd-9849-e45d3c378f12 
+> http://dogapi.dog/api/v2/breeds  
+> http://dogapi.dog/api/v2/breeds/68f47c5a-5115-47cd-9849-e45d3c378f12 
 
 Click on this URL in your browser,  https://dogapi.dog/api/v2/breeds and view the returned JSON.  It will not be formatted so you'll have to copy-paste the JSON so you can read the JSON.
 

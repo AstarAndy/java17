@@ -2,9 +2,8 @@ package com.acf.examples.java17.controller;
 
 import com.acf.examples.java17.record.ServiceResponse;
 import com.acf.examples.java17.record.breed.BreedRec;
-import com.acf.examples.java17.record.breed.BreedsListResponse;
+import com.acf.examples.java17.record.breed.DetailsForBreedResponse;
 import com.acf.examples.java17.service.DogsApiService;
-import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -24,8 +23,8 @@ public class DogsApiController {
     @Autowired
     private DogsApiService dogsService;
     @GetMapping(value = "/breeds")
-    public ResponseEntity<BreedsListResponse> getAllBreeds() {
-        BreedsListResponse result = dogsService.getAllBreeds();
+    public ResponseEntity<DetailsForBreedResponse> getAllBreeds() {
+        DetailsForBreedResponse result = dogsService.getAllBreeds();
         log.info("Response from getAllBreeds is \n\n" + result);
         return ResponseEntity.ok(result);
     }
