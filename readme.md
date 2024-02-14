@@ -50,16 +50,16 @@ At this point you have everything you need to play with the project
 
 A public api was used as the backend of this exercise.  Here's a list of URLS for the actual api.  You can simply click on one of these links and you'll see the response right from your browser:
 
-> http://dogapi.dog/api/v2/breeds  
-> http://dogapi.dog/api/v2/breeds/68f47c5a-5115-47cd-9849-e45d3c378f12 
+> https://randomuser.me/api
+> https://randomuser.me/api?city=Fuenlabrada
 
-Click on this URL in your browser,  https://dogapi.dog/api/v2/breeds and view the returned JSON.  It will not be formatted so you'll have to copy-paste the JSON so you can read the JSON.
+Click on this URL in your browser,  https://randomuser.me/api and view the returned JSON.
 
-This project used the java `Record` type and implemented `part of` the entire graph.  Basically the `data` section along with the `breeds` section.  The remaining return data is `ignored`.
+This project used the java `Record` type and implemented `part of` the entire graph.  Basically the `results` section.  The remaining return data is `ignored`.
 
 Once you have the app running locally, you can then use the localhost URLs as follows  
-> http://localhost:8080/api/v2/breeds  
-> http://localhost:8080/api/v2/breeds/68f47c5a-5115-47cd-9849-e45d3c378f12
+> http://localhost:8080/users
+> http://localhost:8080/users?city=Fuenlabrada
 
 And `SwaggerDocs` is enabled and you can hit it via these URLs locally  
 > http://localhost:8080/v3/api-docs  

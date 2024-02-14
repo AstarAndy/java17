@@ -44,7 +44,7 @@ logging:
         examples:
           java17: DEBUG
       zaxxer:
-        hikari: INFO
+        hikari: ERROR
     org:
       hibernate:
         SQL: INFO
