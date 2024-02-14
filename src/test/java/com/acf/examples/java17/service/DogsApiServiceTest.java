@@ -1,7 +1,7 @@
 package com.acf.examples.java17.service;
 
-import com.acf.examples.java17.record.breed.BreedRec;
-import com.acf.examples.java17.record.breed.DetailsForBreedResponse;
+import com.acf.examples.java17.record.user.BreedRec;
+import com.acf.examples.java17.record.user.DetailsForBreedResponse;
 import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,7 +25,7 @@ class DogsApiServiceTest {
     RestTemplate rtRestClient;
 
     @InjectMocks
-    private DogsApiService dogsApi = new DogsApiService();
+    private RandomUserService dogsApi = new RandomUserService(rtRestClient, "");
 
     @BeforeEach
     void setUp() {

@@ -53,10 +53,7 @@ logging:
         type: INFO
 
 services:
-  dogapi:
-    host: https://dogapi.dog
-    baseUrl: /api/v2
-    fullUrl: ${services.dogapi.host}${services.dogapi.baseUrl}
-    breeds:
-      fullUrl: ${services.dogapi.fullUrl}/breeds
-
+  randomuser:
+    host: https://randomuser.me
+    baseUrl: /api
+    fullUrl: ${services.randomuser.host}${services.randomuser.baseUrl}
