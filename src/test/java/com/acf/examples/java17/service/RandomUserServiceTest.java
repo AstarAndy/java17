@@ -1,7 +1,10 @@
 package com.acf.examples.java17.service;
 
-import com.acf.examples.java17.record.user.BreedRec;
-import com.acf.examples.java17.record.user.DetailsForBreedResponse;
+import com.acf.examples.java17.record.ServiceResponse;
+import com.acf.examples.java17.record.user.User;
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,7 +13,14 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
+
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 @ExtendWith(MockitoExtension.class)
@@ -20,7 +30,7 @@ class RandomUserServiceTest {
     RestTemplate rtRestClient;
 
     @InjectMocks
-    private RandomUserService dogsApi = new RandomUserService(rtRestClient, "");
+    private RandomUserService userService = new RandomUserService(rtRestClient, "");
 
     @BeforeEach
     void setUp() {
@@ -28,34 +38,23 @@ class RandomUserServiceTest {
     }
 
     @Test
-    void getAllBreedsTest() {
+    void getRandomUserTest() {
+        ServiceResponse<List<User>> mockedBody = new ServiceResponse<>(new ArrayList<>());
+        ResponseEntity<ServiceResponse<List<User>>> mockedResponse = ResponseEntity.ok(mockedBody);
 
-        //ServiceResponse<List<BreedRec>> mockedResult = new ServiceResponse<>(new ArrayList<>());
-        //DetailsForBreedResponse mockedResult = new DetailsForBreedResponse(new ArrayList<BreedRec>());
+        when (rtRestClient.exchange(
+                anyString(),
+                eq(HttpMethod.GET),
+                eq(ResponseEntity.EMPTY),
+                eq(new ParameterizedTypeReference<ServiceResponse<List<User>>>() { } ))
+        )
+        .thenReturn(mockedResponse);  // RestTemplate.exchange returns a ResponseEntity
 
-        /*
-                The service being tested, DogsApiService has a private
-                field, breedsFullUrl, that gets injected by the @Value
-                annotation.  This in this test that field is null you
-                can inject a value Using RelectionUtils, or use the
-                Mockito.ArgumentMatchers.isNull() OR
-                you can use ReflectionUtils
-                ReflectionTestUtils.setField(dogsApi, "breedsFullUrl", "/mocked/url/value");
-         */
+        var mockedResult = mockedResponse.getBody();    // ServiceResponse<List<User>>
+        var actualResult = userService.getRandomUser(); // ServiceResponse<List<User>>
 
-        // Remember, when mocking, all params must be actual values or all matchers
-//        ReflectionTestUtils.setField(dogsApi, "breedsFullUrl", "/mocked/url/value");
-//        when(rtRestClient
-//             .getForObject("/mocked/url/value", DetailsForBreedResponse.class))
-//            .thenReturn(mockedResult);
-//
-//
-//        DetailsForBreedResponse actualResult = dogsApi.getAllBreeds();
-//        Assert.assertEquals(mockedResult, actualResult);
+        Assert.assertEquals(mockedResult, actualResult);
 
     }
 
-    @Test
-    void getBreedForUuid() {
-    }
 }
