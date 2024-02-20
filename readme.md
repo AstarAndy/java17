@@ -65,6 +65,16 @@ And `SwaggerDocs` is enabled and you can hit it via these URLs locally
 > http://localhost:8080/v3/api-docs  
 > http://localhost:8080/swagger-ui.html
 
+Apache Maven style-checker plugin
+> See; https://maven.apache.org/plugins/maven-checkstyle-plugin/index.html
+
+## Docker Stuff
+
+See the [docker readme](docker-readme.md) for details and help with docker
+
+
+
+
 Feel free to post comments on the repo if you'd like.
 
 

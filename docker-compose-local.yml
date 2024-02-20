@@ -1,0 +1,12 @@
+version: '2.2'
+services:
+  sb3-java17-mvcapp:
+    container_name: sb3-java17-mvcapp
+    build:
+      context: sb3-java17-mvcapp
+      dockerfile: Dockerfile
+    environment:
+      - "SPRING_PROFILES_ACTIVE=local"
+    image: sb3-java17-mvcapp:latest
+    ports:
+      - 8080:8080
