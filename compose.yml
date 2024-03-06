@@ -3,7 +3,7 @@ services:
   sb3-java17-mvcapp:
     container_name: sb3-java17-mvcapp
     build:
-      context: ./java17
+      context: .
       dockerfile: Dockerfile
     environment:
       - "SPRING_PROFILES_ACTIVE=prod"

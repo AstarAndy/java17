@@ -17,7 +17,7 @@ Run the image
 > Use `docker compose` with a profile-based yml like [compose-local.yml](compose-local.yml).
 > After creating your compose{-profile}.yml file you can run a check on it with this command:
 > docker compose -f compose-local.yml config
-> and to build your image you can run
+> and to build your image you can run [see here](https://docs.docker.com/compose/compose-file/build/)
 > docker compose -f compose-local.yml build
 > and to run it use:
 > docker compose -f compose-local.yml up
