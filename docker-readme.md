@@ -1,6 +1,11 @@
 # Docker Stuff
 
-##
+## NOTE:
+
+As of July 2023 `docker-compose` has been depreciated.  Now use `Docker compose` instead.
+
+Also the `docker-compose.yml` file is now just `compose.yml` 
+
 
 Build the image
 > docker build -t sb3-java17-mvcapp .
@@ -9,11 +14,13 @@ Run the image
 > docker run -e "SPRING_PROFILES_ACTIVE=local" -p 8080:8080 sb3-java17-mvcapp
 > You can enter `control+C` to stop the container.
 > 
-> Use `docker-compose` with a profile-based yml like [docker-compose-local.yml](docker-compose-local.yml).
-> After creating your docker-compose{-profile}.yml file you can run a check on it with this command:
-> docker-compose -f docker-compose-local.yml config
+> Use `docker compose` with a profile-based yml like [compose-local.yml](compose-local.yml).
+> After creating your compose{-profile}.yml file you can run a check on it with this command:
+> docker compose -f compose-local.yml config
+> and to build your image you can run [see here](https://docs.docker.com/compose/compose-file/build/)
+> docker compose -f compose-local.yml build
 > and to run it use:
-> docker-compose -f docker-compose-local.yml up
+> docker compose -f compose-local.yml up
 > Note that version `2.2` of docker compose, or higher, is required.
 
 ## Useful commands:
